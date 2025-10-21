@@ -1,0 +1,16 @@
+
+CSDL đề án công ty theo dõi các thông tin liên
+quan đến nhân viên, phòng ban và đề án 
+- Công ty có nhiều phòng ban, mỗi phòng
+ban có tên duy nhất, mã phòng duy nhất,
+một trưởng phòng và ngày nhận chức. Mỗi
+phòng ban có thể ở nhiều địa điểm khác
+nhau.
+- Đề án có tên duy nhất, mã duy nhất, do 1
+một phòng ban chủ trì và được triển khai ở
+1 địa điểm.
+- Nhân viên có mã số, tên, địa chỉ, ngày sinh,
+phái và lương. Mỗi nhân viên làm việc ở 1
+phòng ban, tham gia vào các đề án với số
+giờ làm việc khác nhau. Mỗi nhân viên đều
+có một người quản lý trực tiếp.

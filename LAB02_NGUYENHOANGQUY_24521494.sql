@@ -1,71 +1,155 @@
-﻿USE QuanLyBanHang;
+﻿USE QuanLyGiaoVu
+GO
+-- 1 BẢNG KHOA
+INSERT INTO KHOA (MAKHOA, TENKHOA, NGTLAP, TRGKHOA) VALUES
+('KHMT', 'Khoa hoc may tinh', '2005-06-07', 'GV01'),
+('HTTT', 'He thong thong tin', '2005-06-07', 'GV02'),
+('CNPM', 'Cong nghe phan mem', '2005-06-07', 'GV04'),
+('MTT', 'Mang va truyen thong', '2005-10-20', 'GV03'),
+('KTMT', 'Ky thuat may tinh', '2005-12-20', NULL);
 GO
 
-
--- NHAP DU LIEU BANG KHACHHANG
-
-INSERT INTO KHACHHANG (MAKH, HOTEN, DCHI, SODT, NGSINH, NGDK, DOANHSO, LOAIKH)
-VALUES
-('KH01', 'Nguyen Van A', '731 Tran Hung Dao, Q5, TpHCM', '08823451', '1960-10-22', '2006-07-22', 13060000, NULL),
-('KH02', 'Tran Ngoc Han', '23/5 Nguyen Trai, Q5, TpHCM', '0908256478', '1974-04-03', '2006-07-30', 280000, NULL),
-('KH03', 'Tran Ngoc Linh', '45 Nguyen Canh Chan, Q1, TpHCM', '0938776266', '1980-06-12', '2006-08-05', 3860000, NULL),
-('KH04', 'Tran Minh Long', '50/34 Le Dai Hanh, Q10, TpHCM', '0917325476', '1965-03-09', '2006-10-02', 250000, NULL),
-('KH05', 'Le Nhat Minh', '34 Truong Dinh, Q3, TpHCM', '08246108', '1950-03-10', '2006-10-28', 21000, NULL),
-('KH06', 'Le Hoai Thuong', '227 Nguyen Van Cu, Q5, TpHCM', '08631738', '1981-12-31', '2006-11-24', 915000, NULL),
-('KH07', 'Nguyen Van Tam', '32/3 Tran Binh Trong, Q5, TpHCM', '0916783565', '1971-04-06', '2006-12-01', 12500, NULL),
-('KH08', 'Phan Thi Thanh', '45/2 An Duong Vuong, Q5, TpHCM', '0938435756', '1971-01-10', '2006-12-13', 365000, NULL),
-('KH09', 'Le Ha Vinh', '873 Le Hong Phong, Q5, TpHCM', '08654763', '1979-09-03', '2007-01-14', 70000, NULL),
-('KH10', 'Ha Duy Lap', '34/34B Nguyen Trai, Q1, TpHCM', '08768904', '1983-05-02', '2007-01-16', 67500, NULL);
+-- 2 BẢNG GIAOVIEN
+INSERT INTO GIAOVIEN (MAGV, HOTEN, HOCVI, HOCHAM, GIOITINH, NGSINH, NGVL, HESO, MUCLUONG, MAKHOA) VALUES
+('GV01', 'Nguyen Hoai An', 'TS', 'GS', 'Nam', '1973-02-15', '2004-01-11', 5.00, 2250000, 'KHMT'),
+('GV02', 'Tran Tam Thanh', 'TS', 'PGS', 'Nam', '1965-12-17', '2004-04-20', 4.50, 2025000, 'HTTT'),
+('GV03', 'Nguyen Ngoc Anh', 'ThS', NULL, 'Nu', '1975-05-11', '2005-11-23', 4.00, 1800000, 'MTT'),
+('GV04', 'Nguyen Van Long', 'TS', 'PGS', 'Nam', '1961-09-20', '2005-01-01', 5.00, 2250000, 'CNPM'),
+('GV05', 'Tran Thi Thu Thuy', 'KS', NULL, 'Nu', '1976-07-25', '2005-01-01', 3.00, 1350000, 'KTMT');
 GO
 
--- NHAP DU LIEU NHANVIEN
-
-INSERT INTO NHANVIEN (MANV, HOTEN, SODT, NGVL)
-VALUES
-('NV01', 'Nguyen Nhu Nhut', '0927345678', '2006-04-13'),
-('NV02', 'Le Thi Phi Yen', '0987567390', '2006-04-21'),
-('NV03', 'Nguyen Van B', '0997047382', '2006-04-27'),
-('NV04', 'Ngo Thanh Tuan', '0913758498', '2006-06-24'),
-('NV05', 'Nguyen Thi Truc Thanh', '0918590387', '2006-07-20');
-
-
+-- BẢNG LOP
+INSERT INTO LOP (MALOP, TENLOP, TRGLOP, SISO, MAGVCN) VALUES
+('K11', 'Lop 1 khoa 1', 'HV07', 11, 'GV01'),
+('K12', 'Lop 2 khoa 1', 'HV02', 12, 'GV02'),
+('K13', 'Lop 3 khoa 1', 'HV03', 12, 'GV03');
 GO
 
--- NHAP DU LIEU SANPHAM
-
-INSERT INTO SANPHAM(MASP, TENSP, DVT, NUOCSX, GIA)
-VALUES
-('BC01', 'But chi', 'cay', 'Singapore', 3000),
-('BC02', 'But chi', 'cay', 'Singapore', 5000),
-('BC03', 'But chi', 'cay', 'Viet Nam', 3500),
-('BC04', 'But chi', 'hop', 'Viet Nam', 30000),
-('BB01', 'But bi', 'cay', 'Viet Nam', 5000),
-('BB02', 'But bi', 'cay', 'Trung Quoc', 7000),
-('BB03', 'But bi', 'hop', 'Thai Lan', 100000),
-('TV01', 'Tap 100 giay mong', 'quyen', 'Trung Quoc', 2500),
-('TV02', 'Tap 200 giay mong', 'quyen', 'Trung Quoc', 4500),
-('TV03', 'Tap 100 giay tot', 'quyen', 'Viet Nam', 3000),
-('TV04', 'Tap 200 giay tot', 'quyen', 'Viet Nam', 5500),
-('TV05', 'Tap 100 trang', 'chuc', 'Viet Nam', 23000),
-('TV06', 'Tap 200 trang', 'chuc', 'Viet Nam', 53000),
-('TV07', 'Tap 100 trang', 'chuc', 'Trung Quoc', 34000),
-('ST01', 'So tay 500 trang', 'quyen', 'Trung Quoc', 40000),
-('ST02', 'So tay loai 1', 'quyen', 'Viet Nam', 55000),
-('ST03', 'So tay loai 2', 'quyen', 'Viet Nam', 51000),
-('ST04', 'So tay', 'quyen', 'Thai Lan', 55000),
-('ST05', 'So tay mong', 'quyen', 'Thai Lan', 20000),
-('ST06', 'Phan viet bang', 'hop', 'Viet Nam', 5000),
-('ST07', 'Phan khong bui', 'hop', 'Viet Nam', 7000),
-('ST08', 'Bong bang', 'cai', 'Viet Nam', 1000),
-('ST09', 'But long', 'cay', 'Viet Nam', 5000),
-('ST10', 'But long', 'cay', 'Trung Quoc', 7000);
-
+--  BẢNG MONHOC
+INSERT INTO MONHOC (MAMH, TENMH, TCLT, TCTH, MAKHOA) VALUES
+('THDC', 'Tin hoc dai cuong', 4, 1, 'KHMT'),
+('CTRR', 'Cau truc roi rac', 5, 0, 'KHMT'),
+('CSDL', 'Co so du lieu', 3, 1, 'HTTT'),
+('CTDLGT', 'Cau truc du lieu va giai thuat', 3, 1, 'KHMT'),
+('PTTKTT', 'Phan tich thiet ke thuat toan', 3, 0, 'KHMT'),
+('DHMT', 'Do hoa may tinh', 3, 1, 'KHMT'),
+('KTMT', 'Kien truc may tinh', 3, 0, 'KTMT'),
+('TKCSDL', 'Thiet ke co so du lieu', 3, 1, 'HTTT'),
+('PTTKHTTT', 'Phan tich thiet ke he thong thong tin', 4, 1, 'HTTT'),
+('HDH', 'He dieu hanh', 4, 0, 'KTMT'),
+('NMCNPM', 'Nhap mon cong nghe phan mem', 3, 0, 'CNPM'),
+('LTCFW', 'Lap trinh C for win', 3, 1, 'CNPM'),
+('LTHDT', 'Lap trinh huong doi tuong', 3, 1, 'CNPM'),
+('MMT', 'Mang may tinh', 3, 1, 'MTT');
 GO
 
--- NHAP DU LIEU HOADON
+-- BẢNG DIEUKIEN
+INSERT INTO DIEUKIEN (MAMH, MAMH_TRUOC) VALUES
+('CSDL', 'CTRR'),
+('CSDL', 'THDC'),
+('CTDLGT', 'THDC'),
+('PTTKTT', 'THDC'),
+('PTTKTT', 'CTDLGT'),
+('DHMT', 'THDC'),
+('LTHDT', 'THDC'),
+('PTTKHTTT', 'CSDL');
+GO
 
-INSERT INTO HOADON (SOHD, NGHD, MAKH, MANV, TRIGIA)
+-- BẢNG HOCVIEN
+INSERT INTO HOCVIEN (MAHV, HO, TEN, NGSINH, GIOITINH, NOISINH, MALOP) VALUES
+('HV01', 'Nguyen Van', 'A', '1986-02-23', 'Nam', 'TpHCM', 'K11'),
+('HV02', 'Tran Thi', 'B', '1986-04-14', 'Nu', 'KhanhHoa', 'K12'),
+('HV03', 'Le Van', 'C', '1986-12-20', 'Nam', 'TpHCM', 'K13'),
+('HV04', 'Pham Thi', 'D', '1986-02-25', 'Nu', 'TpHCM', 'K11'),
+('HV05', 'Nguyen Thi', 'E', '1987-01-20', 'Nu', 'TpHCM', 'K12'),
+('HV06', 'Hoang Van', 'F', '1986-08-12', 'Nam', 'Da Nang', 'K13'),
+('HV07', 'Phan Thi', 'G', '1986-09-02', 'Nu', 'TpHCM', 'K11'),
+('HV08', 'Dang Van', 'H', '1986-03-05', 'Nam', 'KhanhHoa', 'K12'),
+('HV09', 'Bui Thi', 'I', '1987-04-08', 'Nu', 'Da Nang', 'K13'),
+('HV10', 'Tran Van', 'K', '1986-07-11', 'Nam', 'TpHCM', 'K11'),
+('HV11', 'Nguyen Thi', 'L', '1986-12-12', 'Nu', 'TpHCM', 'K12'),
+('HV12', 'Vo Van', 'M', '1987-01-01', 'Nam', 'TpHCM', 'K13'),
+('HV13', 'Nguyen Van', 'N', '1986-04-04', 'Nam', 'TpHCM', 'K11');
+GO
+
+--  BẢNG GIANGDAY
+INSERT INTO GIANGDAY (MALOP, MAMH, MAGV, HOCKY, NAM, TUNGAY, DENNGAY) VALUES
+('K11', 'THDC', 'GV07', 1, 2006, '2006-02-01', '2006-06-15'),
+('K12', 'CTRR', 'GV06', 1, 2006, '2006-02-01', '2006-06-15'),
+('K13', 'CSDL', 'GV02', 2, 2006, '2006-07-01', '2006-11-30'),
+('K11', 'CTDLGT', 'GV05', 2, 2006, '2006-07-01', '2006-11-30'),
+('K12', 'PTTKTT', 'GV01', 3, 2007, '2007-02-01', '2007-06-15'),
+('K13', 'DHMT', 'GV03', 3, 2007, '2007-02-01', '2007-06-15'),
+('K11', 'HDH', 'GV04', 1, 2007, '2007-09-01', '2008-01-15');
+GO
+
+--  BẢNG KETQUATHI
+INSERT INTO KETQUATHI (MAHV, MAMH, LANTHI, NGTHI, DIEM, KQUA) VALUES
+('HV01', 'THDC', 1, '2006-06-15', 9.00, 'Dat'),
+('HV02', 'CTRR', 1, '2006-06-15', 8.50, 'Dat'),
+('HV03', 'CSDL', 1, '2006-11-30', 4.50, 'Khong dat'),
+('HV03', 'CSDL', 2, '2006-12-20', 6.00, 'Dat'),
+('HV04', 'CTDLGT', 1, '2006-11-30', 5.50, 'Dat'),
+('HV05', 'PTTKTT', 1, '2007-06-15', 7.00, 'Dat'),
+('HV06', 'DHMT', 1, '2007-06-15', 5.00, 'Dat'),
+('HV07', 'HDH', 1, '2008-01-15', 8.00, 'Dat');
+GO
+
+-- QUANLYBANHANG
+-- 1. KHACHHANG
+INSERT INTO KHACHHANG (MAKH, HOTEN, DCHI, SODT, NGSINH, DOANHSO, NGDK)
 VALUES
+('KH01', N'Nguyen Van A', N'731 Tran Hung Dao, Q5, TpHCM', '08823451', '1960-10-22', 13060000, '2006-07-22'),
+('KH02', N'Tran Ngoc Han', N'23/5 Nguyen Trai, Q5, TpHCM', '0908256478', '1974-04-03', 280000, '2006-07-30'),
+('KH03', N'Tran Ngoc Linh', N'45 Nguyen Canh Chan, Q1, TpHCM', '0938776266', '1980-06-12', 3860000, '2006-08-05'),
+('KH04', N'Tran Minh Long', N'50/34 Le Dai Hanh, Q10, TpHCM', '0917325476', '1965-03-09', 250000, '2006-10-02'),
+('KH05', N'Le Nhat Minh', N'34 Truong Dinh, Q3, TpHCM', '08246108', '1950-03-10', 21000, '2006-10-28'),
+('KH06', N'Le Hoai Thuong', N'227 Nguyen Van Cu, Q5, TpHCM', '08631738', '1981-12-31', 915000, '2006-11-24'),
+('KH07', N'Nguyen Van Tam', N'32/3 Tran Binh Trong, Q5, TpHCM', '0916783565', '1971-04-06', 12500, '2006-12-01'),
+('KH08', N'Phan Thi Thanh', N'45/2 An Duong Vuong, Q5, TpHCM', '0938435756', '1971-01-10', 365000, '2006-12-13'),
+('KH09', N'Le Ha Vinh', N'873 Le Hong Phong, Q5, TpHCM', '08654763', '1979-09-03', 70000, '2007-01-14'),
+('KH10', N'Ha Duy Lap', N'34/34B Nguyen Trai, Q1, TpHCM', '08768904', '1983-05-02', 67500, '2007-01-16');
+GO
+
+-- 2. NHANVIEN
+INSERT INTO NHANVIEN VALUES
+('NV01', N'Nguyen Nhu Nhut', '0927345678', '2006-04-13'),
+('NV02', N'Le Thi Phi Yen', '0987567390', '2006-04-21'),
+('NV03', N'Nguyen Van B', '0997047382', '2006-04-27'),
+('NV04', N'Ngo Thanh Tuan', '0913758498', '2006-06-24'),
+('NV05', N'Nguyen Thi Truc Thanh', '0918590387', '2006-07-20');
+GO
+
+-- 3. SANPHAM
+INSERT INTO SANPHAM VALUES
+('BC01', N'But chi', N'cay', N'Singapore', 3000),
+('BC02', N'But chi', N'cay', N'Singapore', 5000),
+('BC03', N'But chi', N'cay', N'Viet Nam', 3500),
+('BC04', N'But chi', N'hop', N'Viet Nam', 30000),
+('BB01', N'But bi', N'cay', N'Viet Nam', 5000),
+('BB02', N'But bi', N'cay', N'Trung Quoc', 7000),
+('BB03', N'But bi', N'hop', N'Thai Lan', 100000),
+('TV01', N'Tap 100 giay mong', N'quyen', N'Trung Quoc', 2500),
+('TV02', N'Tap 200 giay mong', N'quyen', N'Trung Quoc', 4500),
+('TV03', N'Tap 100 giay tot', N'quyen', N'Viet Nam', 3000),
+('TV04', N'Tap 200 giay tot', N'quyen', N'Viet Nam', 5500),
+('TV05', N'Tap 100 trang', N'chuc', N'Viet Nam', 23000),
+('TV06', N'Tap 200 trang', N'chuc', N'Viet Nam', 53000),
+('TV07', N'Tap 100 trang', N'chuc', N'Trung Quoc', 34000),
+('ST01', N'So tay 500 trang', N'quyen', N'Trung Quoc', 40000),
+('ST02', N'So tay loai 1', N'quyen', N'Viet Nam', 55000),
+('ST03', N'So tay loai 2', N'quyen', N'Viet Nam', 51000),
+('ST04', N'So tay', N'quyen', N'Thai Lan', 55000),
+('ST05', N'So tay mong', N'quyen', N'Thai Lan', 20000),
+('ST06', N'Phan viet bang', N'hop', N'Viet Nam', 5000),
+('ST07', N'Phan khong bui', N'hop', N'Viet Nam', 7000),
+('ST08', N'Bong bang', N'cai', N'Viet Nam', 1000),
+('ST09', N'But long', N'cay', N'Viet Nam', 5000),
+('ST10', N'But long', N'cay', N'Trung Quoc', 7000);
+GO
+
+-- 4. HOADON
+INSERT INTO HOADON VALUES
 (1001, '2006-07-23', 'KH01', 'NV01', 320000),
 (1002, '2006-08-12', 'KH01', 'NV02', 840000),
 (1003, '2006-08-23', 'KH02', 'NV01', 100000),
@@ -86,14 +170,10 @@ VALUES
 (1018, '2007-01-13', 'KH08', 'NV03', 330000),
 (1019, '2007-01-13', 'KH01', 'NV03', 30000),
 (1020, '2007-01-14', 'KH09', 'NV04', 70000),
-(1021, '2007-01-16', 'KH10', 'NV03', 67500),
-(1022, '2007-01-16', NULL, 'NV03', 7000),
-(1023, '2007-01-17', NULL, 'NV01', 330000);
-
+(1021, '2007-01-16', 'KH10', 'NV03', 67500);
 GO
 
--- NHAP DU LIEU CTHD
-
+-- 5. CTHD
 INSERT INTO CTHD (SOHD, MASP, SL)
 VALUES
 (1001, 'TV02', 10),
@@ -141,265 +221,51 @@ VALUES
 (1020, 'ST07', 10),
 (1021, 'ST08', 5),
 (1021, 'TV01', 7),
-(1021, 'TV02', 10),
-(1022, 'ST07', 1),
-(1023, 'ST04', 6);
-
+(1021, 'TV02', 10);
 GO
-
--- CAU 2: NHAP DU LIEU CSDL QuanLyGiaoVu.
-
-USE QuanLyGiaoVu;
-
-GO
-
-
--- NHAP DU LIEU KHOA
-
-INSERT INTO KHOA (MAKHOA, TENKHOA, NGTLAP, TRGKHOA)
-VALUES
-('KHMT', 'Khoa hoc may tinh', '2005-06-07', 'GV01'),
-('HTTT', 'He thong thong tin', '2005-06-07', 'GV02'),
-('CNPM', 'Cong nghe phan mem', '2005-06-07', 'GV04'),
-('MTT', 'Mang va truyen thong', '2005-10-20', 'GV03'),
-('KTMT', 'Ky thuat may tinh', '2005-12-20', NULL);
-
-GO
-
--- NHAP DU LIEU MONHOC
-
-INSERT INTO MONHOC (MAMH, TENMH, TCLT, TCTH, MAKHOA)
-VALUES
-('THDC', 'Tin hoc dai cuong', 4, 1, 'KHMT'),
-('CTRR', 'Cau truc roi rac', 5, 2, 'KHMT'),
-('CSDL', 'Co so du lieu', 3, 1, 'HTTT'),
-('CTDLGT', 'Cau truc du lieu va giai thuat', 3, 1, 'KHMT'),
-('PTTKTT', 'Phan tich thiet ke thuat toan', 3, 0, 'KHMT'),
-('DHMT', 'Do hoa may tinh', 3, 1, 'KHMT'),
-('KTMT', 'Kien truc may tinh', 3, 0, 'KTMT'),
-('TKCSDL', 'Thiet ke co so du lieu', 3, 1, 'HTTT'),
-('PTTKHTTT', 'Phan tich thiet ke he thong thong tin', 4, 1, 'HTTT'),
-('HDH', 'He dieu hanh', 4, 1, 'KTMT'),
-('NMCNPM', 'Nhap mon cong nghe phan mem', 3, 0, 'CNPM'),
-('LTCFW', 'Lap trinh C for win', 3, 1, 'CNPM'),
-('LTHDT', 'Lap trinh huong doi tuong', 3, 1, 'CNPM');
-
-GO
-
--- NHAP DU LIEU GIAOVIEN
-
-INSERT INTO GIAOVIEN (MAGV, HOTEN, HOCVI, HOCHAM, GIOITINH, NGSINH, NGVL, HESO, MUCLUONG, MAKHOA)
-VALUES
-('GV01', 'Ho Thanh Son', 'PTS', 'GS', 'Nam', '1950-05-02', '2004-01-11', 5.00, 2250000, 'KHMT'),
-('GV02', 'Tran Tam Thanh', 'TS', 'PGS', 'Nam', '1965-12-17', '2004-04-20', 4.50, 2025000, 'HTTT'),
-('GV03', 'Do Nghiem Phung', 'TS', 'GS', 'Nu', '1950-08-01', '2004-09-23', 4.00, 1800000, 'CNPM'),
-('GV04', 'Tran Nam Son', 'TS', 'PGS', 'Nam', '1961-02-22', '2005-01-12', 4.50, 2025000, 'CNPM'),
-('GV05', 'Mai Thanh Danh', 'ThS', 'GV', 'Nam', '1958-03-12', '2005-01-12', 3.00, 1350000, 'KTMT'),
-('GV06', 'Tran Doan Hung', 'TS', 'GV', 'Nam', '1953-03-11', '2005-01-12', 4.50, 2025000, 'HTTT'),
-('GV07', 'Nguyen Minh Tien', 'ThS', 'GV', 'Nam', '1971-11-23', '2005-03-01', 4.00, 1800000, 'KHMT'),
-('GV08', 'Le Thi Tran', 'KS', NULL, 'Nu', '1974-03-26', '2005-03-01', 1.69, 760500, 'KHMT'),
-('GV09', 'Nguyen To Lan', 'ThS', 'GV', 'Nu', '1966-12-31', '2005-03-01', 4.00, 1800000, 'KHMT'),
-('GV10', 'Le Tran Anh Loan', 'KS', NULL, 'Nu', '1972-07-17', '2005-03-01', 1.86, 837000, 'HTTT'),
-('GV11', 'Ho Thanh Tung', 'CN', 'GV', 'Nam', '1980-01-12', '2005-05-15', 2.67, 1201500, 'CNPM'),
-('GV12', 'Tran Van Anh', 'CN', NULL, 'Nu', '1981-03-29', '2005-05-15', 1.69, 760500, 'MTT'),
-('GV13', 'Nguyen Linh Dan', 'CN', NULL, 'Nu', '1980-05-23', '2005-05-15', 1.69, 760500, 'CNPM'),
-('GV14', 'Truong Minh Chau', 'ThS', 'GV', 'Nu', '1976-11-30', '2005-05-15', 3.00, 1350000, 'KTMT'),
-('GV15', 'Le Ha Thanh', 'ThS', 'GV', 'Nam', '1978-05-04', '2005-05-15', 3.00, 1350000, 'KHMT');
-
-GO
-
-
--- NHAP DU LIEU DIEUKIEN 
-
-INSERT INTO DIEUKIEN (MAMH, MAMH_TRUOC)
-VALUES
-('CSDL', 'CTRR'),
-('CSDL', 'CTDLGT'),
-('CTDLGT', 'THDC'),
-('PTTKTT', 'THDC'),
-('PTTKTT', 'CTDLGT'),
-('DHMT', 'THDC'),
-('LTHDT', 'THDC'),
-('PTTKHTTT', 'CSDL');
-
-GO
-
--- TAT FK DE NHAP DU LIEU TRANH RECURSION FOREIGN KEY
-ALTER TABLE LOP NOCHECK CONSTRAINT FK_LOP_TRGLOP;
-ALTER TABLE HOCVIEN NOCHECK CONSTRAINT FK_HOCVIEN_MALOP;
-
--- NHAP DU LIEU HOCVIEN
-
-INSERT INTO HOCVIEN (MAHV, HO, TEN, NGSINH, GIOITINH, NOISINH, MALOP) VALUES
-('K1101', 'Nguyen Van', 'A', '1986-01-27', 'Nam', 'TpHCM', 'K11'),
-('K1102', 'Tran Ngoc', 'Han', '1986-03-14', 'Nu', 'Kien Giang', 'K11'),
-('K1103', 'Ha Duy', 'Lap', '1986-04-18', 'Nam', 'Nghe An', 'K11'),
-('K1104', 'Tran Ngoc', 'Linh', '1986-03-30', 'Nu', 'Tay Ninh', 'K11'),
-('K1105', 'Tran Minh', 'Long', '1986-02-27', 'Nam', 'TpHCM', 'K11'),
-('K1106', 'Le Nhat', 'Minh', '1986-01-24', 'Nam', 'TpHCM', 'K11'),
-('K1107', 'Nguyen Nhu', 'Nhut', '1986-01-27', 'Nam', 'Ha Noi', 'K11'),
-('K1108', 'Nguyen Manh', 'Tam', '1986-02-27', 'Nam', 'Kien Giang', 'K11'),
-('K1109', 'Phan Thi Thanh', 'Tam', '1986-01-27', 'Nu', 'Vinh Long', 'K11'),
-('K1110', 'Le Hoai', 'Thuong', '1986-02-05', 'Nu', 'Can Tho', 'K11'),
-('K1111', 'Le Ha', 'Vinh', '1986-12-25', 'Nam', 'Vinh Long', 'K11'),
-
-('K1201', 'Nguyen Van', 'B', '1986-02-11', 'Nam', 'TpHCM', 'K12'),
-('K1202', 'Nguyen Thi Kim', 'Duyen', '1986-01-18', 'Nu', 'TpHCM', 'K12'),
-('K1203', 'Tran Thi Kim', 'Duyen', '1986-09-17', 'Nu', 'TpHCM', 'K12'),
-('K1204', 'Truong My', 'Hanh', '1986-05-19', 'Nu', 'Dong Nai', 'K12'),
-('K1205', 'Nguyen Thanh', 'Nam', '1986-04-17', 'Nam', 'TpHCM', 'K12'),
-('K1206', 'Nguyen Thi Truc', 'Thanh', '1986-03-04', 'Nu', 'Kien Giang', 'K12'),
-('K1207', 'Tran Thi Bich', 'Thuy', '1986-02-08', 'Nu', 'Nghe An', 'K12'),
-('K1208', 'Huynh Thi Kim', 'Trieu', '1986-04-08', 'Nu', 'Tay Ninh', 'K12'),
-('K1209', 'Pham Thanh', 'Trieu', '1986-02-23', 'Nam', 'TpHCM', 'K12'),
-('K1210', 'Ngo Thanh', 'Tuan', '1986-02-14', 'Nam', 'TpHCM', 'K12'),
-('K1211', 'Do Thi', 'Xuan', '1986-03-09', 'Nu', 'Ha Noi', 'K12'),
-('K1212', 'Le Thi Phi', 'Yen', '1986-03-12', 'Nu', 'TpHCM', 'K12'),
-
-('K1301', 'Nguyen Thi Kim', 'Cuc', '1986-06-09', 'Nu', 'Kien Giang', 'K13'),
-('K1302', 'Truong Thi My', 'Hien', '1986-03-18', 'Nu', 'Nghe An', 'K13'),
-('K1303', 'Le Duc', 'Hien', '1986-03-21', 'Nam', 'Tay Ninh', 'K13'),
-('K1304', 'Le Quang', 'Hien', '1986-04-18', 'Nam', 'TpHCM', 'K13'),
-('K1305', 'Le Thi', 'Huong', '1986-03-27', 'Nu', 'TpHCM', 'K13'),
-('K1306', 'Nguyen Thai', 'Huu', '1986-03-30', 'Nam', 'Ha Noi', 'K13'),
-('K1307', 'Tran Minh', 'Man', '1986-05-28', 'Nam', 'TpHCM', 'K13'),
-('K1308', 'Nguyen Hieu', 'Nghia', '1986-04-08', 'Nam', 'Kien Giang', 'K13'),
-('K1309', 'Nguyen Trung', 'Nghia', '1987-01-18', 'Nam', 'Nghe An', 'K13'),
-('K1310', 'Tran Thi Hong', 'Tham', '1986-04-22', 'Nu', 'Tay Ninh', 'K13'),
-('K1311', 'Tran Minh', 'Thuc', '1986-04-04', 'Nam', 'TpHCM', 'K13'),
-('K1312', 'Nguyen Thi Kim', 'Yen', '1986-09-07', 'Nu', 'TpHCM', 'K13');
-
-
-GO
-
-
--- NHAP DU LIEU LOP
-
-INSERT INTO LOP (MALOP, TENLOP, TRGLOP, SISO, MAGVCN)
-VALUES
-('K11', 'Lop 1 khoa 1', 'K1108', 11, 'GV07'),
-('K12', 'Lop 2 khoa 1', 'K1205', 12, 'GV09'),
-('K13', 'Lop 3 khoa 1', 'K1305', 12, 'GV14');
-
-GO
-
--- BAT LAI FOREIGN KEY
-
-ALTER TABLE LOP CHECK CONSTRAINT FK_LOP_TRGLOP;
-ALTER TABLE HOCVIEN CHECK CONSTRAINT FK_HOCVIEN_MALOP;
-
-
--- NHAP DU LEIU GIANGDAY
-
-INSERT INTO GIANGDAY (MALOP, MAMH, MAGV, HOCKY, NAM, TUNGAY, DENNGAY) VALUES
-('K11', 'THDC', 'GV07', 1, 2006, '2006-01-02', '2006-05-12'),
-('K12', 'THDC', 'GV06', 1, 2006, '2006-01-02', '2006-05-12'),
-('K13', 'THDC', 'GV15', 1, 2006, '2006-01-02', '2006-05-12'),
-('K11', 'CTRR', 'GV02', 1, 2006, '2006-01-09', '2006-05-17'),
-('K12', 'CTRR', 'GV02', 1, 2006, '2006-01-09', '2006-05-17'),
-('K13', 'CTRR', 'GV08', 1, 2006, '2006-01-09', '2006-05-17'),
-('K11', 'CSDL', 'GV05', 2, 2006, '2006-06-01', '2006-07-15'),
-('K12', 'CSDL', 'GV09', 2, 2006, '2006-06-01', '2006-07-15'),
-('K13', 'CTDLGT', 'GV15', 2, 2006, '2006-06-01', '2006-07-15'),
-('K13', 'CSDL', 'GV05', 3, 2006, '2006-08-01', '2006-12-15'),
-('K13', 'DHMT', 'GV07', 3, 2006, '2006-08-01', '2006-12-15'),
-('K11', 'CTDLGT', 'GV15', 3, 2006, '2006-08-01', '2006-12-15'),
-('K12', 'CTDLGT', 'GV15', 3, 2006, '2006-08-01', '2006-12-15'),
-('K11', 'HDH', 'GV04', 1, 2007, '2007-01-02', '2007-02-18'),
-('K12', 'HDH', 'GV04', 1, 2007, '2007-01-02', '2007-03-20'),
-('K11', 'DHMT', 'GV07', 1, 2007, '2007-02-18', '2007-03-20');
-
-
-GO
-
--- NHAP DU LIEU CHO KETQUATHI
-
-INSERT INTO KETQUATHI (MAHV, MAMH, LANTHI, NGTHI, DIEM, KQUA) VALUES
-('K1202', 'CTRR',   2, '2006-05-20',  4.00, 'Khong Dat'),
-('K1202', 'CTRR',   3, '2006-06-30',  6.25, 'Dat'),
-('K1203', 'CSDL',   1, '2006-07-20',  9.25, 'Dat'),
-('K1203', 'CTDLGT', 1, '2006-12-28',  9.50, 'Dat'),
-('K1203', 'THDC',   1, '2006-05-20', 10.00, 'Dat'),
-('K1203', 'CTRR',   1, '2006-05-13', 10.00, 'Dat'),
-('K1204', 'CSDL',   1, '2006-07-20',  8.50, 'Dat'),
-('K1204', 'CTDLGT', 1, '2006-12-28',  6.75, 'Dat'),
-('K1204', 'THDC',   1, '2006-05-20',  4.00, 'Khong Dat'),
-('K1204', 'CTRR',   1, '2006-05-13',  6.00, 'Dat'),
-('K1301', 'CSDL',   1, '2006-12-20',  4.25, 'Khong Dat'),
-('K1301', 'CTDLGT', 1, '2006-07-25',  8.00, 'Dat'),
-('K1301', 'THDC',   1, '2006-05-20',  7.75, 'Dat'),
-('K1301', 'CTRR',   1, '2006-05-13',  8.00, 'Dat'),
-('K1302', 'CSDL',   1, '2006-12-20',  6.75, 'Dat'),
-('K1302', 'CTDLGT', 1, '2006-07-25',  5.00, 'Dat'),
-('K1302', 'THDC',   1, '2006-05-20',  8.00, 'Dat'),
-('K1302', 'CTRR',   1, '2006-05-13',  8.50, 'Dat'),
-('K1303', 'CSDL',   1, '2006-12-20',  4.00, 'Khong Dat'),
-('K1303', 'CTDLGT', 1, '2006-07-25',  4.50, 'Khong Dat'),
-('K1303', 'CTDLGT', 2, '2006-08-07',  4.00, 'Khong Dat'),
-('K1303', 'CTDLGT', 3, '2006-08-15',  4.25, 'Khong Dat'),
-('K1303', 'THDC',   1, '2006-05-20',  4.50, 'Khong Dat'),
-('K1303', 'CTRR',   1, '2006-05-13',  3.25, 'Khong Dat'),
-('K1303', 'CTRR',   2, '2006-05-20',  5.00, 'Dat'),
-('K1304', 'CSDL',   1, '2006-12-20',  7.75, 'Dat'),
-('K1304', 'CTDLGT', 1, '2006-07-25',  9.75, 'Dat'),
-('K1304', 'THDC',   1, '2006-05-20',  5.50, 'Dat'),
-('K1304', 'CTRR',   1, '2006-05-13',  5.00, 'Dat'),
-('K1305', 'CSDL',   1, '2006-12-20',  9.25, 'Dat'),
-('K1305', 'CTDLGT', 1, '2006-07-25', 10.00, 'Dat'),
-('K1305', 'THDC',   1, '2006-05-20',  8.00, 'Dat'),
-('K1305', 'CTRR',   1, '2006-05-13', 10.00, 'Dat');
-
-
-GO
-
--- BAI TAP 3
-
--- Tạo quan hệ SANPHAM1 chứa toàn bộ dữ liệu của quan hệ SANPHAM. Tạo quan hệ KHACHHANG1 chứa toàn bộ dữ liệu của quan hệ KHACHHANG.
-
-USE QuanLyBanHang;
-
-GO
-
+-- quanlybanhang phan2 2-5
+--2
 SELECT * INTO SANPHAM1 FROM SANPHAM;
-
-GO
-
 SELECT * INTO KHACHHANG1 FROM KHACHHANG;
-
--- Cập nhật giá tăng 5% đối với những sản phẩm do “Thai Lan” sản xuất (cho quan hệ SANPHAM1)
-
-UPDATE SANPHAM1 
-SET GIA*=1.05 
-WHERE NUOCSX='Thai Lan';
-
 GO
+--3
+UPDATE SANPHAM1
+SET GIA = GIA * 1.05
+WHERE NUOCSX = 'Thai Lan';
 
--- TEST KETQUA LENH UPDATE
+--4
 
-SELECT SP.GIA AS GIA1, SP1.GIA AS GIA2
-FROM SANPHAM SP
-INNER JOIN SANPHAM1 SP1
-    ON SP.MASP = SP1.MASP
-WHERE SP.NUOCSX = 'Thai Lan';
+UPDATE SANPHAM1
+SET GIA = GIA * 0.95
+WHERE NUOCSX = 'Trung Quoc';
 
+--5
+UPDATE KHACHHANG1
+SET LOAIKH = 'Vip'
+WHERE 
+    (NGDK < '2007-01-01' AND DOANHSO >= 10000000)
+    OR
+    (NGDK >= '2007-01-01' AND DOANHSO >= 2000000);
 
+-- QUANLYGIAOVU BAI 11-14
+USE QuanLyGiaoVu;
 GO
-
--- Cập nhật giá giảm 5% đối với những sản phẩm do “Trung Quoc” sản xuất có giá từ 10.000 trở xuống (cho quan hệ SANPHAM1).
-
-UPDATE SANPHAM1 
-SET GIA*=0.95 
-WHERE NUOCSX='Trung Quoc' AND GIA <= 10000;
-
+--11 Học viên ít nhất là 18 tuổi.
+ALTER TABLE HOCVIEN
+ADD CONSTRAINT CK_TUOI_HV 
+CHECK (DATEADD(YEAR, 18, NGSINH) <= GETDATE());
 GO
-
--- TEST KETQUA
-SELECT SP.GIA AS GIA1, SP1.GIA AS GIA2
-FROM SANPHAM SP
-INNER JOIN SANPHAM1 SP1
-ON SP.MASP= SP1.MASP
-WHERE SP.NUOCSX='Trung Quoc' AND SP.GIA <= 10000;
-
+--12 Giảng dạy một môn học ngày bắt đầu (TUNGAY) phải nhỏ hơn ngày kết thúc (DENNGAY).
+ALTER TABLE GIANGDAY
+ADD CONSTRAINT CK_NGAY CHECK (TUNGAY < DENNGAY);
 GO
-
+--13 Giáo viên khi vào làm ít nhất là 22 tuổi.
+ALTER TABLE GIAOVIEN
+ADD CONSTRAINT CK_TUOI_GV
+CHECK( DATEADD(YEAR,22,NGSINH) <= GETDATE());
+GO
+--14 Tất cả các môn học đều có số tín chỉ lý thuyết và tín chỉ thực hành chênh lệch nhau không quá 3.
+ALTER TABLE MONHOC
+ADD CONSTRAINT CK_SOTINCHI 
+CHECK (ABS(TCLT - TCTH) <= 3);
 
